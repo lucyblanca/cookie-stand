@@ -1,0 +1,72 @@
+body {
+  background-color: lightyellow;
+}
+
+img {
+  /* display: float; */
+	width: 30%;
+	margin-left: 400px;
+	margin-bottom: 25px;
+}
+
+h1 {
+  color: brown;
+  font-size: 50px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+h2 {
+  color: brown;
+  font-size: 30px;
+  padding-top: 20px;
+	padding-left: 150px;
+}
+
+h3 {
+  color: brown;
+  font-size: 30px;
+  padding-top: 20px;
+	padding-left: 65px;
+}
+
+p {
+  font-size: 20px;
+  margin: 20px 175px;
+}
+
+ul {
+  list-style: circle;
+  font-family: Verdana;
+  font-size: 25px;
+  font-weight: normal;
+  color: brown;
+  margin-left: 65px;
+  /* padding-bottom: 10px; */
+  /* border: 2px solid green; */
+}
+
+li {
+  margin: 20px 125px;
+}
+
+ul li {
+  margin-left: 150px;
+  font-size: 20px;
+  font-weight: normal;
+  color: black;
+}
+
+.main-title {
+	font-family: 'Gayathri', sans-serif;
+	font-size: 50px;
+	color: white;
+  text-align: center;
+  background-color: brown;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+/* Header and Footer
+---------------------------- */
