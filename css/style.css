@@ -1,0 +1,94 @@
+body {
+  background-color: lightyellow;
+}
+
+img {
+  /* width: 30%; */
+  margin: 0 auto;
+  width: 400px;
+	margin-left: 400px;
+	margin-bottom: 25px;
+}
+
+h1 {
+  color: brown;
+  font-size: 50px;
+  /* padding-left: 20px; */
+  padding-bottom: 20px;
+}
+
+h2 {
+  font-family: Georgia;
+  color: peru;
+  /* color: black; */
+  font-size: 30px;
+  padding-top: 20px;
+	padding-left: 150px;
+}
+
+h3 {
+  font-family: Verdana;
+  color: peru;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-left: 65px;
+  padding-bottom: 15px;
+}
+
+p {
+  font-family: Times;
+  font-size: 20px;
+  margin: 20px 175px;
+}
+
+ul {
+  list-style: circle;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: normal;
+  color: brown;
+  margin-left: 95px;
+}
+
+.locations {
+  margin-left: 100px;
+}
+
+li {
+  margin: 20px 120px;
+}
+
+ul li {
+  list-style: square;  
+  margin-left: 82px;
+  font-size: 20px;
+  font-weight: normal;
+  color: black;
+}
+
+li p {
+  margin-left: 5px;
+  font-family: Times;
+}
+
+.main-title {
+  font-family: 'Dancing Script', cursive;
+	font-size: 60px;
+	color: white;
+  text-align: center;
+  background-color: brown;
+	padding-top: 20px;
+	margin-bottom: 15px;
+}
+
+.backColor {
+  background-color: rgb(216, 190, 156);
+  padding-bottom: 10px;
+}
+
+/* Header and Footer
+---------------------------- */
+footer {
+  margin-bottom: 50px;
+}
