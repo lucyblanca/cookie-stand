@@ -3,8 +3,9 @@ body {
 }
 
 img {
-  /* display: float; */
-	width: 30%;
+  /* width: 30%; */
+  margin: 0 auto;
+  width: 400px;
 	margin-left: 400px;
 	margin-bottom: 25px;
 }
@@ -18,49 +19,62 @@ h1 {
 }
 
 h2 {
-  color: brown;
+  font-family: Georgia;
+  color: peru;
   font-size: 30px;
   padding-top: 20px;
 	padding-left: 150px;
 }
 
 h3 {
-  color: brown;
+  font-family: Verdana;
+  color: peru;
   font-size: 30px;
+  font-weight: bold;
   padding-top: 20px;
-	padding-left: 65px;
+  padding-left: 65px;
+  padding-bottom: 15px;
 }
 
 p {
+  font-family: Times;
   font-size: 20px;
   margin: 20px 175px;
 }
 
 ul {
   list-style: circle;
-  font-family: Verdana;
+  font-family: Arial;
   font-size: 25px;
   font-weight: normal;
   color: brown;
-  margin-left: 65px;
-  /* padding-bottom: 10px; */
-  /* border: 2px solid green; */
+  margin-left: 95px;
+}
+
+.locations {
+  margin-left: 100px;
 }
 
 li {
-  margin: 20px 125px;
+  margin: 20px 120px;
 }
 
 ul li {
-  margin-left: 150px;
+  list-style: square;  
+  margin-left: 82px;
   font-size: 20px;
   font-weight: normal;
   color: black;
 }
 
+li p {
+  margin-left: 5px;
+  font-family: Times;
+}
+
 .main-title {
-	font-family: 'Gayathri', sans-serif;
-	font-size: 50px;
+  font-family: 'Dancing Script', cursive;
+	font-size: 60px;
 	color: white;
   text-align: center;
   background-color: brown;
@@ -68,5 +82,9 @@ ul li {
 	margin-bottom: 15px;
 }
 
+
 /* Header and Footer
 ---------------------------- */
+footer {
+  margin-bottom: 50px;
+}

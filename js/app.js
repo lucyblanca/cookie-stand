@@ -153,7 +153,7 @@ var JerseyShoreBakery = {
   }
 }
 
-var ManilaBakery = {
+  var ManilaBakery = {
   avgCookiesPerCust: 3.7,
   minHourlyCustomers: 11,
   maxHourlyCustomers: 38,
