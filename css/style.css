@@ -10,6 +10,20 @@ img {
 	margin-bottom: 25px;
 }
 
+nav {
+  margin-left: 1px;
+  padding-left: 1px;
+  /* font-size: 15px; */
+}
+
+nav li {
+  font-family: sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
 h1 {
   color: brown;
   font-size: 50px;
@@ -50,10 +64,6 @@ ul {
   margin-left: 95px;
 }
 
-/* li {
-  margin: 20px 120px;
-} */
-
 li p {
   padding-top: 5px;
   margin-left: 5px;
@@ -64,7 +74,7 @@ ul li {
   list-style: square; 
   padding-top: 5px; 
   /* padding-left: 10px; */
-  margin-left: 82px;
+  margin-left: 0px;
   font-size: 20px;
   font-weight: normal;
   color: black;
@@ -86,6 +96,7 @@ div {
 
 .merch {
   margin-left: 350px;
+  margin-top: 15px;
 }
 
 .main-title {
@@ -93,14 +104,21 @@ div {
 	font-size: 60px;
 	color: white;
   text-align: center;
-  background-color: brown;
+  /* background-color: brown; */
 	padding-top: 20px;
 	margin-bottom: 15px;
 }
 
-.backColor {
+.back-color {
   background-color: rgb(216, 190, 156);
   padding-bottom: 10px;
+}
+
+.content-wrap {
+  margin: 0 auto;
+  padding-left: 20px;
+  overflow: hidden;
+  background-color: rgba(165, 42, 42, 0.596);
 }
 
 .merchandise-img { 
@@ -110,17 +128,6 @@ div {
   margin: 0 auto;
 }
 
-/* .locations {
-  margin-left: 100px;
-} */
-
-/* .about-img {
-  margin: 0 auto;
-  width: 500px;
-	margin-left: 500px;
-  /* margin-bottom: 25px; */
-} */
-
 .family-img {
   width: 300px;
   margin-right: 30px;
@@ -128,13 +135,17 @@ div {
   padding-left: 300px;
 }
 
-.phone-num {
-  margin: 5px 175px 15px 175px;
+.nav-margin {
+  margin-left: 1px;
 }
 /* Header and Footer
 ---------------------------- */
 footer {
   margin-bottom: 50px;
+}
+
+footer li {
+  margin-left: 82px;
 }
 
 /* Table
@@ -143,6 +154,7 @@ table {
   border: 2px solid black;
   border-collapse: collapse;
   border-bottom: 2px solid black;
+  margin-top: 10px;
   margin-left: 10px;
 }
 
