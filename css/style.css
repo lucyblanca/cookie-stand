@@ -13,7 +13,6 @@ img {
 h1 {
   color: brown;
   font-size: 50px;
-  /* padding-left: 20px; */
   padding-bottom: 20px;
 }
 
@@ -91,4 +90,48 @@ li p {
 ---------------------------- */
 footer {
   margin-bottom: 50px;
+}
+
+/* Table
+---------------------------- */
+table {
+  border: 2px solid black;
+  border-collapse: collapse;
+  border-bottom: 2px solid black;
+  margin-left: 10px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+th {
+  font-family: Georgia;
+  color: black;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  height: 25px;
+  text-align: center;
+  background-color: tan;
+}
+
+td {
+  font-family: Arial;
+  text-align: center;
+  height: 25px;
+  padding-top: 5px;
+}
+
+tr {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: 2px solid black;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
 }
