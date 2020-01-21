@@ -38,7 +38,7 @@ h3 {
 p {
   font-family: Times;
   font-size: 20px;
-  margin: 20px 175px;
+  margin: 5px 172px 15px 172px;
 }
 
 ul {
@@ -50,38 +50,43 @@ ul {
   margin-left: 95px;
 }
 
-.locations {
-  margin-left: 100px;
-}
-
-li {
+/* li {
   margin: 20px 120px;
+} */
+
+li p {
+  padding-top: 5px;
+  margin-left: 5px;
+  font-family: Times;
 }
 
 ul li {
-  list-style: square;  
+  list-style: square; 
+  padding-top: 5px; 
+  /* padding-left: 10px; */
   margin-left: 82px;
   font-size: 20px;
   font-weight: normal;
   color: black;
 }
 
-li p {
-  margin-left: 5px;
-  font-family: Times;
-}
 
 section img {
-  margin-left: 50px;
+  margin-left: 350px;
   margin-top: 50px;
+  /* display: inline-block; */
 }
 
-section li {
-  list-style: none;
-  display: inline-block;
+div {
+  font-family: Arial;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 35px;
 }
 
-
+.merch {
+  margin-left: 350px;
+}
 
 .main-title {
   font-family: 'Dancing Script', cursive;
@@ -105,6 +110,27 @@ section li {
   margin: 0 auto;
 }
 
+/* .locations {
+  margin-left: 100px;
+} */
+
+/* .about-img {
+  margin: 0 auto;
+  width: 500px;
+	margin-left: 500px;
+  /* margin-bottom: 25px; */
+} */
+
+.family-img {
+  width: 300px;
+  margin-right: 30px;
+  margin-left: 100px;
+  padding-left: 300px;
+}
+
+.phone-num {
+  margin: 5px 175px 15px 175px;
+}
 /* Header and Footer
 ---------------------------- */
 footer {
