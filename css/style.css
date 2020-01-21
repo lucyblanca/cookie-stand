@@ -71,6 +71,18 @@ li p {
   font-family: Times;
 }
 
+section img {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+section li {
+  list-style: none;
+  display: inline-block;
+}
+
+
+
 .main-title {
   font-family: 'Dancing Script', cursive;
 	font-size: 60px;
@@ -84,6 +96,13 @@ li p {
 .backColor {
   background-color: rgb(216, 190, 156);
   padding-bottom: 10px;
+}
+
+.merchandise-img { 
+  width: 300px;
+  overflow: auto;
+  border: 2px solid gray;
+  margin: 0 auto;
 }
 
 /* Header and Footer

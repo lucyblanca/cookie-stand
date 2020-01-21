@@ -1,9 +1,8 @@
 'use strict';
 
 // Global variables
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
 var allBakeries = [];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var bakeryNames = ['Alki', 'Big Island', 'Manila', 'Jersey Shore', 'Seattle'];
 var bakeryTable = document.getElementById('bakery-table');
 
@@ -89,6 +88,8 @@ Bakery.generateHourlyTotals = function() {
   tdElem.textContent = 'Totals';
   trElem.appendChild(tdElem);
 
+  // Add up all the cookies sold per hour per bakery and store the sum
+  // in an array
   for ( var i = 0; i < hours.length; i++) {
     for (var j = 0; j < allBakeries.length; j++) {
       hourlyTotal += allBakeries[j].cookiesSoldPerHour[i];
@@ -98,6 +99,7 @@ Bakery.generateHourlyTotals = function() {
     hourlyTotal = 0;
   }
 
+  // Display at the bottom of table each hourly total under appropriate column.
   for ( i = 0; i < totalCookiesPerHour.length; i++) {
     // Create td element, set text content and append to table
     tdElem = document.createElement('td');
@@ -105,7 +107,7 @@ Bakery.generateHourlyTotals = function() {
     trElem.appendChild(tdElem); 
   }
 
-  // Create td element, set text content and append to table
+  // Create td element, set text content to grand total cookies sold and append to table
   tdElem = document.createElement('td');
   tdElem.textContent = grandTotal;
   trElem.appendChild(tdElem);    
