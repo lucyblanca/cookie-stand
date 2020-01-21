@@ -1,221 +1,151 @@
 'use strict';
 
+// Global variables
+var allBakeries = [];
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
 var bakeryNames = ['Alki', 'Big Island', 'Manila', 'Jersey Shore', 'Seattle'];
-var storeIndex = 0;
+var bakeryTable = document.getElementById('bakery-table');
 
-var AlkiBakery = {
-  avgCookiesPerCust: 1.2,
-  minHourlyCustomers: 3,
-  maxHourlyCustomers: 24,
-  cookiesSoldPerHour: [],
-  totalCookiesSold: 0,
-  calculateCookiesPerHour: function() {
+function Bakery(name, avgCookiesPerCust, minHrlyCust, maxHrlyCust) {
+  this.bakeryName = name;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  this.minHourlyCustomers = minHrlyCust; 
+  this.maxHourlyCustomers = maxHrlyCust;
+  this.cookiesSoldPerHour = [];
+  this.totalCookiesSold = 0;
+  this.calculateCookiesPerHour = function() {
     for (var i = 0; i < hours.length; i++) {
       this.cookiesSoldPerHour[i] = Math.floor(this.calculateRandomNumCustPerHour() * this.avgCookiesPerCust);
     }
-  },
-  calculateRandomNumCustPerHour: function() {
+  };
+  this.calculateRandomNumCustPerHour = function() {
     return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
-  },
-  calculateTotalCookiesSold: function() {
+  };
+  this.calculateTotalCookiesSold = function() {
     for (var i = 0; i < this.cookiesSoldPerHour.length; i++) {
       this.totalCookiesSold += this.cookiesSoldPerHour[i];
     }
-  },
-  displayCookiesPerHour: function() {
-    var ulElem = document.getElementById('alkiBakery');
-    ulElem.textContent = `${bakeryNames[storeIndex]} Bakery`;
+  };
+} // end Bakery Object definition
 
-    var ilElem;
+// Creates a table header and appends to bakery table element
+Bakery.renderHeader = function () {
+  var headerRow = document.createElement('tr');
 
-    for (var i = 0; i < hours.length; i++) {
-      ilElem = document.createElement('li');
-      ilElem.textContent = `${hours[i]}:  ${this.cookiesSoldPerHour[i]} cookies`;
-      ulElem.appendChild(ilElem);
-    }
-
-    ilElem = document.createElement('li');
-    ilElem.textContent = `Total Cookies Sold:  ${this.totalCookiesSold} cookies`;
-    ulElem.appendChild(ilElem);
+  var thEl = document.createElement('th');
+  thEl.textContent = '                 ';
+  headerRow.appendChild(thEl);
+  
+  for (var i = 0; i < hours.length; i++) {
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    headerRow.appendChild(thEl);
   }
-}
 
-var BigIslandBakery = {
-  avgCookiesPerCust: 3.7,
-  minHourlyCustomers: 11,
-  maxHourlyCustomers: 38,
-  cookiesSoldPerHour: [],
-  totalCookiesSold: 0,
-  calculateCookiesPerHour: function() {
-    for (var i = 0; i < hours.length; i++) {
-      this.cookiesSoldPerHour[i] = Math.floor(this.calculateRandomNumCustPerHour() * this.avgCookiesPerCust);
-    }
-  },
-  calculateRandomNumCustPerHour: function() {
-    return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
-  },
-  calculateTotalCookiesSold: function() {
-    for (var i = 0; i < this.cookiesSoldPerHour.length; i++) {
-      this.totalCookiesSold += this.cookiesSoldPerHour[i];
-    }
-  },
-  displayCookiesPerHour: function() {
-    var ulElem = document.getElementById('bigIslandBakery');
-    ulElem.textContent = `${bakeryNames[storeIndex]} Bakery`;
+  thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  headerRow.appendChild(thEl);
 
-    var ilElem;
+  //Append row to table
+  bakeryTable.append(headerRow);
+};  // end Bakery.renderHeader function
 
-    for (var i = 0; i < hours.length; i++) {
-      ilElem = document.createElement('li');
-      ilElem.textContent = `${hours[i]}:  ${this.cookiesSoldPerHour[i]} cookies`;
-      ulElem.appendChild(ilElem);
-    }
+// Creates a table that displays all the bakery locations and the number of
+// cookies produced each hour for each bakery.
+Bakery.prototype.renderTable = function() {
+  // Create tr element
+  var trElem = document.createElement('tr');
+  // Create td element
+  var tdElem = document.createElement('td');
+  // Add content to td element
+  tdElem.textContent = this.bakeryName;
+  // Append to tr element
+  trElem.appendChild(tdElem);
+  // Append tr element to table
+  bakeryTable.append(trElem);
 
-    ilElem = document.createElement('li');
-    ilElem.textContent = `Total Cookies Sold:  ${this.totalCookiesSold} cookies`;
-    ulElem.appendChild(ilElem);
+  for (var i = 0; i < hours.length; i++) {
+    tdElem = document.createElement('td');
+    tdElem.textContent = this.cookiesSoldPerHour[i];
+    trElem.appendChild(tdElem);
   }
-}
 
-var SeattleBakery = {
-  avgCookiesPerCust: 6.3,
-  minHourlyCustomers: 23,
-  maxHourlyCustomers: 65,
-  cookiesSoldPerHour: [],
-  totalCookiesSold: 0,
-  calculateCookiesPerHour: function() {
-    for (var i = 0; i < hours.length; i++) {
-      this.cookiesSoldPerHour[i] = Math.floor(this.calculateRandomNumCustPerHour() * this.avgCookiesPerCust);
+  // Create a tr element setting the content to total cookies sold for whole day
+  tdElem = document.createElement('td');
+  tdElem.textContent = this.totalCookiesSold;
+  trElem.appendChild(tdElem);
+};  // end Bakery.prototype.renderTable
+
+// Compute the total cookies per hour for each bakery and display each total
+// at the bottom of table under each hour
+Bakery.generateHourlyTotals = function() {
+  var hourlyTotal = 0;
+  var grandTotal = 0;
+  var totalCookiesPerHour = [];
+  var trElem = document.createElement('tr');
+  var tdElem = document.createElement('td');
+  
+  tdElem.textContent = 'Totals';
+  trElem.appendChild(tdElem);
+
+  // Add up all the cookies sold per hour per bakery and store the sum
+  // in an array
+  for ( var i = 0; i < hours.length; i++) {
+    for (var j = 0; j < allBakeries.length; j++) {
+      hourlyTotal += allBakeries[j].cookiesSoldPerHour[i];
     }
-  },
-  calculateRandomNumCustPerHour: function() {
-    return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
-  },
-  calculateTotalCookiesSold: function() {
-    for (var i = 0; i < this.cookiesSoldPerHour.length; i++) {
-      this.totalCookiesSold += this.cookiesSoldPerHour[i];
-    }
-  },
-  displayCookiesPerHour: function() {
-    var ulElem = document.getElementById('seattleBakery');
-    ulElem.textContent = `${bakeryNames[storeIndex]} Bakery`;
-
-    var ilElem;
-
-    for (var i = 0; i < hours.length; i++) {
-      ilElem = document.createElement('li');
-      ilElem.textContent = `${hours[i]}:  ${this.cookiesSoldPerHour[i]} cookies`;
-      ulElem.appendChild(ilElem);
-    }
-
-    ilElem = document.createElement('li');
-    ilElem.textContent = `Total Cookies Sold:  ${this.totalCookiesSold} cookies`;
-    ulElem.appendChild(ilElem);
+    totalCookiesPerHour[i] = hourlyTotal;
+    grandTotal += hourlyTotal;
+    hourlyTotal = 0;
   }
-}
 
-var JerseyShoreBakery = {
-  avgCookiesPerCust: 3.7,
-  minHourlyCustomers: 11,
-  maxHourlyCustomers: 38,
-  cookiesSoldPerHour: [],
-  totalCookiesSold: 0,
-  calculateCookiesPerHour: function() {
-    for (var i = 0; i < hours.length; i++) {
-      this.cookiesSoldPerHour[i] = Math.floor(this.calculateRandomNumCustPerHour() * this.avgCookiesPerCust);
-    }
-  },
-  calculateRandomNumCustPerHour: function() {
-    return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
-  },
-  calculateTotalCookiesSold: function() {
-    for (var i = 0; i < this.cookiesSoldPerHour.length; i++) {
-      this.totalCookiesSold += this.cookiesSoldPerHour[i];
-    }
-  },
-  displayCookiesPerHour: function() {
-    var ulElem = document.getElementById('jerseyShoreBakery');
-    ulElem.textContent = `${bakeryNames[storeIndex]} Bakery`;
-
-    var ilElem;
-
-    for (var i = 0; i < hours.length; i++) {
-      ilElem = document.createElement('li');
-      ilElem.textContent = `${hours[i]}:  ${this.cookiesSoldPerHour[i]} cookies`;
-      ulElem.appendChild(ilElem);
-    }
-
-    ilElem = document.createElement('li');
-    ilElem.textContent = `Total Cookies Sold:  ${this.totalCookiesSold} cookies`;
-    ulElem.appendChild(ilElem);
+  // Display at the bottom of table each hourly total under appropriate column.
+  for ( i = 0; i < totalCookiesPerHour.length; i++) {
+    // Create td element, set text content and append to table
+    tdElem = document.createElement('td');
+    tdElem.textContent = totalCookiesPerHour[i];
+    trElem.appendChild(tdElem); 
   }
-}
 
-  var ManilaBakery = {
-  avgCookiesPerCust: 3.7,
-  minHourlyCustomers: 11,
-  maxHourlyCustomers: 38,
-  cookiesSoldPerHour: [],
-  totalCookiesSold: 0,
-  calculateCookiesPerHour: function() {
-    for (var i = 0; i < hours.length; i++) {
-      this.cookiesSoldPerHour[i] = Math.floor(this.calculateRandomNumCustPerHour() * this.avgCookiesPerCust);
-    }
-  },
-  calculateRandomNumCustPerHour: function() {
-    return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
-  },
-  calculateTotalCookiesSold: function() {
-    for (var i = 0; i < this.cookiesSoldPerHour.length; i++) {
-      this.totalCookiesSold += this.cookiesSoldPerHour[i];
-    }
-  },
-  displayCookiesPerHour: function() {
-    var ulElem = document.getElementById('manilaBakery');
-    ulElem.textContent = `${bakeryNames[storeIndex]} Bakery`;
+  // Create td element, set text content to grand total cookies sold and append to table
+  tdElem = document.createElement('td');
+  tdElem.textContent = grandTotal;
+  trElem.appendChild(tdElem);    
+  bakeryTable.append(trElem);
+};  // end Bakery.generateHourlyTotals method
 
-    var ilElem;
+// Create Bakery Table beginning with table header
+Bakery.renderHeader();
 
-    for (var i = 0; i < hours.length; i++) {
-      ilElem = document.createElement('li');
-      ilElem.textContent = `${hours[i]}:  ${this.cookiesSoldPerHour[i]} cookies`;
-      ulElem.appendChild(ilElem);
-    }
+// Create Bakery instances
+var alkiBakery = new Bakery('Alki', 3.7, 11, 38);
+alkiBakery.calculateCookiesPerHour();
+alkiBakery.calculateTotalCookiesSold();
+alkiBakery.renderTable();
+allBakeries.push(alkiBakery);
 
-    ilElem = document.createElement('li');
-    ilElem.textContent = `Total Cookies Sold:  ${this.totalCookiesSold} cookies`;
-    ulElem.appendChild(ilElem);
-  }
-}
+var bigIslandBakery = new Bakery('Big Island', 4.6, 2, 16);
+bigIslandBakery.calculateCookiesPerHour();
+bigIslandBakery.calculateTotalCookiesSold();
+bigIslandBakery.renderTable();
+allBakeries.push(bigIslandBakery);
 
-AlkiBakery.calculateCookiesPerHour();
-AlkiBakery.calculateTotalCookiesSold();
-AlkiBakery.displayCookiesPerHour();
+var jerseyShoreBakery = new Bakery('Jersey Shore', 2.3, 20, 38);
+jerseyShoreBakery.calculateCookiesPerHour();
+jerseyShoreBakery.calculateTotalCookiesSold();
+jerseyShoreBakery.renderTable();
+allBakeries.push(jerseyShoreBakery);
 
-storeIndex++;
+var manilaBakery = new Bakery('Manila', 6.3, 23, 65);
+manilaBakery.calculateCookiesPerHour();
+manilaBakery.calculateTotalCookiesSold();
+manilaBakery.renderTable();
+allBakeries.push(manilaBakery);
 
-BigIslandBakery.calculateCookiesPerHour();
-BigIslandBakery.calculateTotalCookiesSold();
-BigIslandBakery.displayCookiesPerHour();
+var seattleBakery = new Bakery('Seattle', 1.2, 3, 24);
+seattleBakery.calculateCookiesPerHour();
+seattleBakery.calculateTotalCookiesSold();
+seattleBakery.renderTable();
+allBakeries.push(seattleBakery);
 
-storeIndex++;
-
-JerseyShoreBakery.calculateCookiesPerHour();
-JerseyShoreBakery.calculateTotalCookiesSold();
-JerseyShoreBakery.displayCookiesPerHour();
-
-storeIndex++;
-
-ManilaBakery.calculateCookiesPerHour();
-ManilaBakery.calculateTotalCookiesSold();
-ManilaBakery.displayCookiesPerHour();
-
-storeIndex++;
-
-SeattleBakery.calculateCookiesPerHour();
-SeattleBakery.calculateTotalCookiesSold();
-SeattleBakery.displayCookiesPerHour();
-
-storeIndex++;
+Bakery.generateHourlyTotals();
