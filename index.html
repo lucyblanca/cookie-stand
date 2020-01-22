@@ -2,28 +2,44 @@
 <html>
   <head>
     <title>Lucy's Bakery</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Gayathri&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1 class="main-title">Lucy's Bakery</h1>
+    <header>
+      <section class="content-wrap">
+        <nav class="nav-margin"> 
+          <ul>
+            <li><a href="index.html" title="Home Page">HOME</a></li>
+            <li><a href="pages/sales.html" title="Sales Projection">SALES</a></li>
+            <li><a href="pages/about.html" title="About Page">ABOUT</a></li>
+            <li><a href="pages/merchandise.html" title="Lucy's Bakery Merchandise">MERCHANDISE</a></li>
+          </ul>
+        </nav>
+        <h1 class="main-title">Lucy's Bakery</h1>
+      </section>
+    </header>
+
     <section>
       <img src="https://raw.githubusercontent.com/codefellows/seattle-201d42/master/class-06-dom-objects-domain_modeling/lab/assets/salmon.png" height="150px" title="Salmon" alt="Salmon">
     </section>
     <section>
       <h2>Our Story</h2>
-      <p>They're cookies made into the shape of a salmon, and actually made with salmon (though the fish is ground up so fine that you can't even taste it!) that is the ideal match for a steaming cup of coffee on a gray Seattle morning.</p>
+      <p class="story">They're cookies made into the shape of a salmon, and actually made with salmon (though the fish is ground up so fine that you can't even taste it!) that is the ideal match for a steaming cup of coffee on a gray Seattle morning.</p>
     </section>
     <hr>
     <footer>
-      <section >
+      <section>
         <h2>Hours</h2> 
-        <p>Mon - Fri: 8am - 4pm</p>
-        <p>Sat: 9am - Noon</p>
-        <p>Sun: Closed</p>   
+        <section >
+          <ul class="hours">
+            <li>Mon - Fri: 8am - 4pm</li>
+            <li>Sat: 9am - Noon</li>
+            <li>Sun: Closed</li>  
+          </ul>
+        </section>
       </section>
       <hr>
       <section>
@@ -31,7 +47,6 @@
         <ul class="locations">
           <li>Alki   
             <p>232 Lake Drive, Seattle, WA 98122  -  p 222-222-2222</p>
-            <!-- <p>p 222-222-2222</p>  -->
           </li>
           <li>Jersey Shore   
             <p>75 Shore Drive, Toms River, NJ 70700  -   p 777-777-7777</p>
