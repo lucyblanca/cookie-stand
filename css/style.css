@@ -13,7 +13,6 @@ img {
 nav {
   margin-left: 1px;
   padding-left: 1px;
-  /* font-size: 15px; */
 }
 
 nav li {
@@ -33,7 +32,6 @@ h1 {
 h2 {
   font-family: Georgia;
   color: peru;
-  /* color: black; */
   font-size: 30px;
   padding-top: 20px;
 	padding-left: 150px;
@@ -49,7 +47,7 @@ h3 {
   padding-bottom: 15px;
 }
 
-p {
+.story {
   font-family: Times;
   font-size: 20px;
   margin: 5px 172px 15px 172px;
@@ -71,20 +69,16 @@ li p {
 }
 
 ul li {
-  list-style: square; 
-  padding-top: 5px; 
-  /* padding-left: 10px; */
+  padding-top: 15px; 
   margin-left: 0px;
   font-size: 20px;
   font-weight: normal;
   color: black;
 }
 
-
 section img {
   margin-left: 350px;
   margin-top: 50px;
-  /* display: inline-block; */
 }
 
 div {
@@ -92,21 +86,6 @@ div {
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 35px;
-}
-
-.merch {
-  margin-left: 350px;
-  margin-top: 15px;
-}
-
-.main-title {
-  font-family: 'Dancing Script', cursive;
-	font-size: 60px;
-	color: white;
-  text-align: center;
-  /* background-color: brown; */
-	padding-top: 20px;
-	margin-bottom: 15px;
 }
 
 .back-color {
@@ -121,6 +100,37 @@ div {
   background-color: rgba(165, 42, 42, 0.596);
 }
 
+.family-img {
+  width: 500px;
+  float: left;
+  margin-left: 5px;
+  padding-right: 15px;
+  /* border: 3px solid red; */
+}
+
+.family-paragraph {
+  font-family: Times;
+  padding-top: 15px;
+  margin-left: 100px;
+  margin-right: 200px;
+  /* border: 3px solid blue; */
+}
+
+.hours {
+  list-style: none;
+  font-family: Times;
+}
+
+.locations {
+  list-style: square;
+  font-family: Times;
+}
+
+.merch {
+  margin-left: 350px;
+  margin-top: 15px;
+}
+
 .merchandise-img { 
   width: 300px;
   overflow: auto;
@@ -128,16 +138,19 @@ div {
   margin: 0 auto;
 }
 
-.family-img {
-  width: 300px;
-  margin-right: 30px;
-  margin-left: 100px;
-  padding-left: 300px;
+.main-title {
+  font-family: 'Dancing Script', cursive;
+	font-size: 60px;
+	color: white;
+  text-align: center;
+	padding-top: 20px;
+	margin-bottom: 15px;
 }
 
 .nav-margin {
   margin-left: 1px;
 }
+
 /* Header and Footer
 ---------------------------- */
 footer {
