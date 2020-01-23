@@ -31,7 +31,8 @@ h1 {
 
 h2 {
   font-family: Georgia;
-  color: peru;
+  /* color: peru; */
+  color: burlywood;
   font-size: 30px;
   padding-top: 20px;
 	padding-left: 150px;
@@ -88,16 +89,17 @@ div {
   margin-bottom: 35px;
 }
 
-.back-color {
+/* .back-color {
   background-color: rgb(216, 190, 156);
   padding-bottom: 10px;
-}
+} */
 
 .content-wrap {
   margin: 0 auto;
   padding-left: 20px;
   overflow: hidden;
-  background-color: rgba(165, 42, 42, 0.596);
+  /* background-color: rgba(165, 42, 42, 0.685); */
+  background-color: lightgray;
 }
 
 .family-img {
@@ -142,7 +144,7 @@ div {
 .main-title {
   font-family: 'Dancing Script', cursive;
 	font-size: 60px;
-	color: white;
+  color: black;
   text-align: center;
 	padding-top: 20px;
 	margin-bottom: 5px;
@@ -231,6 +233,7 @@ input {
 legend {
   font-size: 25px;
   font-weight: bold;
-  color: brown;
+  /* color: brown; */
+  color: burlywood;
   margin-bottom: 10px;
 }
