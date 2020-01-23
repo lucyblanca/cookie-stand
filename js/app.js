@@ -5,6 +5,7 @@ var allBakeries = [];
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var bakeryNames = ['Alki', 'Big Island', 'Manila', 'Jersey Shore', 'Seattle'];
 var bakeryTable = document.getElementById('bakery-table');
+var bakeryForm = document.getElementById('location-form');
 
 function Bakery(name, avgCookiesPerCust, minHrlyCust, maxHrlyCust) {
   this.bakeryName = name;
@@ -13,6 +14,7 @@ function Bakery(name, avgCookiesPerCust, minHrlyCust, maxHrlyCust) {
   this.maxHourlyCustomers = maxHrlyCust;
   this.cookiesSoldPerHour = [];
   this.totalCookiesSold = 0;
+  // Bakery.allBakeries.push(this);
   this.calculateCookiesPerHour = function() {
     for (var i = 0; i < hours.length; i++) {
       this.cookiesSoldPerHour[i] = Math.floor(this.calculateRandomNumCustPerHour() * this.avgCookiesPerCust);
@@ -27,6 +29,34 @@ function Bakery(name, avgCookiesPerCust, minHrlyCust, maxHrlyCust) {
     }
   };
 } // end Bakery Object definition
+
+Bakery.addNewLocation = function(event) {
+  event.preventDefault(); // The preventDefault() prevents reload of page
+
+  var newName = event.target.locationname.value;
+  var newAvgCust = parseFloat(event.target.locationavgcookiespercust.value);
+  var newMinHrlyCust = parseInt(event.target.locationminhrlycust.value);
+  var newMaxHourlyCust = parseInt(event.target.locationmaxhrlycust.value);
+
+  var newLocation = new Bakery(newName, newAvgCust, newMinHrlyCust, newMaxHourlyCust);
+  allBakeries.push(newLocation);
+  newLocation.calculateCookiesPerHour();
+  newLocation.calculateTotalCookiesSold();
+
+  bakeryTable.textContent = '';
+  Bakery.renderHeader();
+  // Bakery.renderAllBakeries();
+  for (var i = 0; i < allBakeries.length; i++) {
+    allBakeries[i].renderTable();
+  }
+  Bakery.generateHourlyTotals();
+}; // end addNewLocation function
+
+// Bakery.renderAllBakeries = function() {
+//   for (var i = 0; i < allBakeries.length; i++) {
+//     allBakeries[i].renderTable();
+//   }
+// }
 
 // Creates a table header and appends to bakery table element
 Bakery.renderHeader = function () {
@@ -121,31 +151,33 @@ Bakery.renderHeader();
 var alkiBakery = new Bakery('Alki', 3.7, 11, 38);
 alkiBakery.calculateCookiesPerHour();
 alkiBakery.calculateTotalCookiesSold();
-alkiBakery.renderTable();
 allBakeries.push(alkiBakery);
+alkiBakery.renderTable();
 
 var bigIslandBakery = new Bakery('Big Island', 4.6, 2, 16);
 bigIslandBakery.calculateCookiesPerHour();
 bigIslandBakery.calculateTotalCookiesSold();
-bigIslandBakery.renderTable();
 allBakeries.push(bigIslandBakery);
+bigIslandBakery.renderTable();
 
 var jerseyShoreBakery = new Bakery('Jersey Shore', 2.3, 20, 38);
 jerseyShoreBakery.calculateCookiesPerHour();
 jerseyShoreBakery.calculateTotalCookiesSold();
-jerseyShoreBakery.renderTable();
 allBakeries.push(jerseyShoreBakery);
+jerseyShoreBakery.renderTable();
 
 var manilaBakery = new Bakery('Manila', 6.3, 23, 65);
 manilaBakery.calculateCookiesPerHour();
 manilaBakery.calculateTotalCookiesSold();
-manilaBakery.renderTable();
 allBakeries.push(manilaBakery);
+manilaBakery.renderTable();
 
 var seattleBakery = new Bakery('Seattle', 1.2, 3, 24);
 seattleBakery.calculateCookiesPerHour();
 seattleBakery.calculateTotalCookiesSold();
-seattleBakery.renderTable();
 allBakeries.push(seattleBakery);
+seattleBakery.renderTable();
 
 Bakery.generateHourlyTotals();
+
+bakeryForm.addEventListener('submit', Bakery.addNewLocation);
