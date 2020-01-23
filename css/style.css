@@ -104,8 +104,9 @@ div {
   width: 500px;
   float: left;
   margin-left: 5px;
-  padding-right: 15px;
-  /* border: 3px solid red; */
+  margin-right: 15px;
+  /* padding-right: 15px; */
+  border: 3px solid gray;
 }
 
 .family-paragraph {
@@ -144,7 +145,7 @@ div {
 	color: white;
   text-align: center;
 	padding-top: 20px;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 
 .nav-margin {
@@ -205,4 +206,31 @@ tr {
 
 tr:nth-child(even) {
   background-color: lightgray;
+}
+
+/* Forms
+---------------------------- */
+button {
+  background-color: lightsteelblue;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 10px;
+}
+
+form {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+input {
+  margin-bottom: 5px;
+  height: 15px;
+}
+
+legend {
+  font-size: 25px;
+  font-weight: bold;
+  color: brown;
+  margin-bottom: 10px;
 }

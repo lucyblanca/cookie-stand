@@ -20,6 +20,29 @@
   </section>
   
   <table id="bakery-table"></table>
+
+  <form id="location-form">
+    <fieldset>
+      <legend>Add a New Location</legend>
+      
+      <label for="name">Location Name</label>
+      <input id="name" type="text" name="locationname" required/><br>
+
+      <label for="average">Average Cookies Per Customer</label>
+      <input id="average" type="number" min="1" step="0.1" name="locationavgcookiespercust" required/><br>
+
+      <label for="mincustperhour">Minimum Customers per Hour</label>
+      <input id="mincustperhour" type="number" min="1" name="locationminhrlycust" required/><br>
+
+      <label for="maxcustperhour">Maximum Customers per Hour</label>
+      <input id="maxcustperhour" type="number" min="1" name="locationmaxhrlycust" required/><br><br>
+
+      <button>Add Location</button>
+    </fieldset>
+  </form>
+
+  <!-- <table id="bakery-table"></table> -->
+
   <script src="../js/app.js"></script>
 </body>
 </html>
