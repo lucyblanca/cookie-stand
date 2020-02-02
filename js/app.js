@@ -43,7 +43,7 @@ function Bakery(name, avgCookiesPerCust, minHrlyCust, maxHrlyCust) {
         this.cookieTossersPerHour[i] = 2;
       }
     }
-  }
+  };
 } // end Bakery Object definition
 
 Bakery.addNewLocation = function(event) {
@@ -55,110 +55,13 @@ Bakery.addNewLocation = function(event) {
   var newMaxHourlyCust = parseInt(event.target.locationmaxhrlycust.value);
 
   var newLocation = new Bakery(newName, newAvgCust, newMinHrlyCust, newMaxHourlyCust);
-  // Bakery.allBakeries.push(newLocation);
+
   newLocation.calculateCookiesPerHour();
   newLocation.calculateTotalCookiesSold();
 
   Bakery.renderAllBakeries();
   Bakery.generateHourlyTotals();
 }; // end addNewLocation function
-
-Bakery.renderAllBakeries = function() {
-  // Clears the content of table and renders the table with all bakery objects 
-  bakeryTable.textContent = '';
-  Bakery.renderHeader();
-  for (var i = 0; i < Bakery.allBakeries.length; i++) {
-    Bakery.allBakeries[i].renderTable();
-  }
-}; // end renderAllBakeries function
-
-// Creates a table header and appends to bakery table element
-Bakery.renderHeader = function() {
-  var headerRow = document.createElement('tr');
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '                 ';
-  headerRow.appendChild(thEl);
-  
-  for (var i = 0; i < hours.length; i++) {
-    thEl = document.createElement('th');
-    thEl.textContent = hours[i];
-    headerRow.appendChild(thEl);
-  }
-
-  thEl = document.createElement('th');
-  thEl.textContent = 'Daily Location Total';
-  headerRow.appendChild(thEl);
-
-  //Append row to table
-  bakeryTable.append(headerRow);
-};  // end Bakery.renderHeader function
-
-// Creates a table header and appends to bakery table element
-Bakery.renderHeaderStaffing = function() {
-  var headerRow = document.createElement('tr');
-  var thEl = document.createElement('th');
-  // thEl.textContent = '                 ';
-  thEl.textContent = '                 ';
-
-  headerRow.appendChild(thEl);
-  
-  for (var i = 0; i < hours.length; i++) {
-    thEl = document.createElement('th');
-    thEl.textContent = hours[i];
-    headerRow.appendChild(thEl);
-  }
-
-  bakeryStaffingTable.append(headerRow);
-  
-};  // end Bakery.renderHeaderStaffing function
-
-// Creates a table that displays all the bakery locations and the number of
-// cookies produced each hour for each bakery.
-Bakery.prototype.renderTable = function() {
-  // Create tr element
-  var trElem = document.createElement('tr');
-  // Create td element
-  var tdElem = document.createElement('td');
-  // Add content to td element
-  tdElem.textContent = this.bakeryName;
-  // Append to tr element
-  trElem.appendChild(tdElem);
-  // Append tr element to table
-  bakeryTable.append(trElem);
-
-  for (var i = 0; i < hours.length; i++) {
-    tdElem = document.createElement('td');
-    tdElem.textContent = this.cookiesSoldPerHour[i];
-    trElem.appendChild(tdElem);
-  }
-
-  // Create a tr element setting the content to total cookies sold for whole day
-  tdElem = document.createElement('td');
-  tdElem.textContent = this.totalCookiesSold;
-  trElem.appendChild(tdElem);
-};  // end Bakery.prototype.renderTable
-
-Bakery.prototype.renderTableCookieTossers = function() {
-  // Create tr element
-  var trElem = document.createElement('tr');
-  // Create td element
-  var tdElem = document.createElement('td');
-  // Add content to td element
-  tdElem.textContent = this.bakeryName;
-  // Append to tr element
-  trElem.appendChild(tdElem);
-  // Append tr element to table
-  bakeryStaffingTable.append(trElem);
-
-  // Loop through array of staff and assign to table row
-  for (var i = 0; i < hours.length; i++) {
-    tdElem = document.createElement('td');
-    tdElem.textContent = this.cookieTossersPerHour[i];
-    trElem.appendChild(tdElem);
-  }
-
-}; // end Bakery.prototype.renderTableCookieTossers
 
 // Compute the total cookies per hour for each bakery and display each total
 // at the bottom of table under each hour
@@ -196,7 +99,16 @@ Bakery.generateHourlyTotals = function() {
   tdElem.textContent = grandTotal;
   trElem.appendChild(tdElem);    
   bakeryTable.append(trElem);
-};  // end Bakery.generateHourlyTotals method
+};  // end Bakery.generateHourlyTotals function
+
+Bakery.renderAllBakeries = function() {
+  // Clears the content of table and renders the table with all bakery objects 
+  bakeryTable.textContent = '';
+  Bakery.renderHeader();
+  for (var i = 0; i < Bakery.allBakeries.length; i++) {
+    Bakery.allBakeries[i].renderTable();
+  }
+}; // end renderAllBakeries function
 
 // Stretch Goal
 Bakery.renderAllBakeriesStaffing = function() {
@@ -205,9 +117,93 @@ Bakery.renderAllBakeriesStaffing = function() {
   for (var i = 0; i < Bakery.allBakeries.length; i++) {
     Bakery.allBakeries[i].renderTableCookieTossers();
   }
+}; // end renderAllBakeriesStaffing function
 
-};
+// Creates a table header and appends to bakery table element
+Bakery.renderHeader = function() {
+  var headerRow = document.createElement('tr');
 
+  var thEl = document.createElement('th');
+  thEl.textContent = '                 ';
+  headerRow.appendChild(thEl);
+  
+  for (var i = 0; i < hours.length; i++) {
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    headerRow.appendChild(thEl);
+  }
+
+  thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  headerRow.appendChild(thEl);
+
+  //Append row to table
+  bakeryTable.append(headerRow);
+};  // end Bakery.renderHeader function
+
+// Creates a table header and appends to bakery table element
+Bakery.renderHeaderStaffing = function() {
+  var headerRow = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = '                 ';
+
+  headerRow.appendChild(thEl);
+  
+  for (var i = 0; i < hours.length; i++) {
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    headerRow.appendChild(thEl);
+  }
+
+  bakeryStaffingTable.append(headerRow);
+};  // end Bakery.renderHeaderStaffing function
+
+// Creates a table that displays all the bakery locations and the number of
+// cookies produced each hour for each bakery.
+Bakery.prototype.renderTable = function() {
+  // Create tr element
+  var trElem = document.createElement('tr');
+  // Create td element
+  var tdElem = document.createElement('td');
+  // Add content to td element
+  tdElem.textContent = this.bakeryName;
+  // Append to tr element
+  trElem.appendChild(tdElem);
+  // Append tr element to table
+  bakeryTable.append(trElem);
+
+  for (var i = 0; i < hours.length; i++) {
+    tdElem = document.createElement('td');
+    tdElem.textContent = this.cookiesSoldPerHour[i];
+    trElem.appendChild(tdElem);
+  }
+
+  // Create a tr element setting the content to total cookies sold for whole day
+  tdElem = document.createElement('td');
+  tdElem.textContent = this.totalCookiesSold;
+  trElem.appendChild(tdElem);
+};  // end Bakery.prototype.renderTable function
+
+Bakery.prototype.renderTableCookieTossers = function() {
+  // Create tr element
+  var trElem = document.createElement('tr');
+  // Create td element
+  var tdElem = document.createElement('td');
+  // Add content to td element
+  tdElem.textContent = this.bakeryName;
+  // Append to tr element
+  trElem.appendChild(tdElem);
+  // Append tr element to table
+  bakeryStaffingTable.append(trElem);
+
+  // Loop through array of staff and assign to table row
+  for (var i = 0; i < hours.length; i++) {
+    tdElem = document.createElement('td');
+    tdElem.textContent = this.cookieTossersPerHour[i];
+    trElem.appendChild(tdElem);
+  }
+
+}; // end Bakery.prototype.renderTableCookieTossers function
 
 // Create Bakery Table beginning with table header
 Bakery.renderHeader();
